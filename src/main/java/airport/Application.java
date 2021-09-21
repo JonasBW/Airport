@@ -24,7 +24,7 @@ public class Application {
         TakeOff(planeId);
         UnloadPassengers(planeId, unloadPassengers);
         Land(planeId);
-        for(Airplane airplane: airplanes) System.out.println(airplane.getPlaneId());
+        for(Airplane airplane: airplanes) System.out.println("Plane Id: " + airplane.getPlaneId() + " Flying: " + airplane.isCurrentlyFlying() + " Current no of passengers: " + airplane.getCurrentNoOfPassengers());
     }
 
     public static void LoadPassengers(String planeId, int passengers){
@@ -36,6 +36,7 @@ public class Application {
                     System.out.println("You can not load more than the max " + airplane.getMaxNoOfPassengers() + " passengers");
                     System.out.println("There is room for " + availableSeat + ". But " + excessPassengers + " do not fit");
                 }else{
+                    airplane.setCurrentlyFlying(false);
                     System.out.println("Plane " + planeId + " has loaded " + passengers + " new passengers");
                 }
             }
@@ -48,6 +49,7 @@ public class Application {
                 if(airplane.isCurrentlyFlying()){
                     System.out.println("This plane is already flying.");
                 }else{
+                    airplane.setCurrentlyFlying(true);
                     System.out.println("Plane " + planeId + " has taken off ");
                 }
             }
@@ -60,6 +62,8 @@ public class Application {
                 if(passengers > airplane.getCurrentNoOfPassengers()){
                     System.out.println("You can not unload more than the current " + airplane.getCurrentNoOfPassengers() + " passengers");
                 }else{
+                    int remainingPassengers = airplane.getCurrentNoOfPassengers() - passengers;
+                    airplane.setCurrentNoOfPassengers(remainingPassengers);
                     System.out.println("Plane " + planeId + " has unloaded " + passengers + " passengers");
                 }
             }
