@@ -4,16 +4,14 @@ import java.util.List;
 
 public class Airport {
     String airportName;
-    List peoplePlanes;
-    List cargoPlanes;
+    List Airplanes;
 
     public Airport() {
     }
 
-    public Airport(String airportName, List peoplePlanes, List cargoPlanes) {
+    public Airport(String airportName, List Airplanes) {
         this.airportName = airportName;
-        this.peoplePlanes = peoplePlanes;
-        this.cargoPlanes = cargoPlanes;
+        this.Airplanes = Airplanes;
     }
 
     public String getAirportName() {
@@ -24,28 +22,19 @@ public class Airport {
         this.airportName = airportName;
     }
 
-    public List getPeoplePlanes() {
-        return peoplePlanes;
+    public List getAirplanes() {
+        return Airplanes;
     }
 
-    public void setPeoplePlanes(List peoplePlanes) {
-        this.peoplePlanes = peoplePlanes;
-    }
-
-    public List getCargoPlanes() {
-        return cargoPlanes;
-    }
-
-    public void setCargoPlanes(List cargoPlanes) {
-        this.cargoPlanes = cargoPlanes;
+    public void setAirplanes(List airplanes) {
+        Airplanes = airplanes;
     }
 
     @Override
     public String toString() {
         return "Airport{" +
                 "airportName='" + airportName + '\'' +
-                ", peoplePlanes=" + peoplePlanes +
-                ", cargoPlanes=" + cargoPlanes +
+                ", Airplanes=" + Airplanes +
                 '}';
     }
 }
