@@ -39,4 +39,13 @@ public class Airport {
     public void setCargoPlanes(List cargoPlanes) {
         this.cargoPlanes = cargoPlanes;
     }
+
+    @Override
+    public String toString() {
+        return "Airport{" +
+                "airportName='" + airportName + '\'' +
+                ", peoplePlanes=" + peoplePlanes +
+                ", cargoPlanes=" + cargoPlanes +
+                '}';
+    }
 }
