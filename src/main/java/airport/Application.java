@@ -49,8 +49,9 @@ public class Application {
 //        for(Peopleplane peoplePlane: peoplePlanes) System.out.println("Plane Id: " + peoplePlane.getPlaneId() + " Flying: " + peoplePlane.isCurrentlyFlying() + " Current no of passengers: " + peoplePlane.getCurrentNoOfPassengers());
 //        LoadCargo("C100", 2350);
 //        UnloadCargo("C101");
-        landedPlanesWithAvailableSpaceInAirport("Eindhoven");
-          planesInAirport("Eindhoven");
+//        landedPlanesWithAvailableSpaceInAirport("Eindhoven");
+//          planesInAirport("Eindhoven");
+        RequestPlaneStatus("C100");
     }
 
 
@@ -113,7 +114,6 @@ public class Application {
             }
         }
     }
-
 
     public static void TakeOff(String planeId){
         for(Peopleplane peoplePlane: peoplePlanes){
@@ -197,6 +197,36 @@ public class Application {
                 }
             }else{
                 System.out.println("Airport not found.");
+            }
+        }
+    }
+
+//    Request the status of a single cargoplane that has landed
+    public static void RequestPlaneStatus(String planeId){
+        for(Peopleplane peoplePlane: peoplePlanes){
+            if (planeId.equals(peoplePlane.getPlaneId())){
+                int availableSeat = peoplePlane.getMaxNoOfPassengers() - peoplePlane.getCurrentNoOfPassengers();
+
+                System.out.print("Passenger Plane " + planeId + " requested. ");
+                if (!peoplePlane.isCurrentlyFlying()) {
+                    System.out.print(" Is Not Flying.");
+                } else {
+                    System.out.print(" Is Flying.");
+                }
+                System.out.print(" Has room for " + availableSeat + " passengers.");
+            }
+        }
+        for(Cargoplane cargoPlane: cargoPlanes){
+            if (planeId.equals(cargoPlane.getPlaneId())){
+                int availableCargo = cargoPlane.getMaxCargoInTons() - cargoPlane.getCurrentCargoInTons();
+
+                System.out.print("Cargo Plane " + planeId + " requested. ");
+                if (!cargoPlane.isCurrentlyFlying()) {
+                    System.out.print(" Is Not Flying.");
+                } else {
+                    System.out.print(" Is Flying.");
+                }
+                System.out.print(" Has room for " + availableCargo + " tons in cargo.");
             }
         }
     }
